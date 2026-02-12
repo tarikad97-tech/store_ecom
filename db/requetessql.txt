@@ -6,6 +6,8 @@ VALUES
 ('Musique'),
 ('Théâtre'),
 ('Danse');
+4)SELECT * FROM `produit`,categorie WHERE produit.id_cat=categorie.id_cat
+
 
 
 
