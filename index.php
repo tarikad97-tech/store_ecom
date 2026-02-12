@@ -135,26 +135,22 @@ include 'navbar.php';
                                         <span class="text-dark" style="width: 130px;">All Products</span>
                                     </a>
                                 </li>
+                                <?php
+$sql="SELECT * FROM `categorie`";
+$res=mysqli_query($db,$sql);
+while ($row=mysqli_fetch_assoc($res)) {
+
+?>
                                 <li class="nav-item">
-                                    <a class="d-flex py-2 m-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-2">
-                                        <span class="text-dark" style="width: 130px;">Vegetables</span>
+                                    <a class="d-flex py-2 m-2 bg-light rounded-pill" data-bs-toggle="pill" href="<?php echo '#tab-'.$row['id_cat']  ?>">
+                                        <span class="text-dark" style="width: 130px;"><?php echo $row['nom_cat'];  ?></span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-3">
-                                        <span class="text-dark" style="width: 130px;">Fruits</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-4">
-                                        <span class="text-dark" style="width: 130px;">Bread</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-5">
-                                        <span class="text-dark" style="width: 130px;">Meat</span>
-                                    </a>
-                                </li>
+                               <?php
+}
+
+
+?>
                             </ul>
                         </div>
                     </div>
