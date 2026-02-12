@@ -1,5 +1,11 @@
 1)SELECT * FROM `categorie`
 2)SELECT * FROM `produit`
 3)INSERT INTO categorie (nom_cat)
-VALUES()
+VALUES 
+('Sport'),
+('Musique'),
+('Théâtre'),
+('Danse');
+
+
 
