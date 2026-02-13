@@ -159,14 +159,14 @@ else {
                                             <a href="#" class="btn border border-secondary px-4 py-3 rounded-pill text-primary w-100">Vew More</a>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <!-- <div class="col-lg-12">
                                         <div class="position-relative">
                                             <img src="img/banner-fruits.jpg" class="img-fluid w-100 rounded" alt="">
                                             <div class="position-absolute" style="top: 50%; right: 10px; transform: translateY(-50%);">
                                                 <h3 class="text-secondary fw-bold">Fresh <br> Fruits <br> Banner</h3>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="col-lg-9">
@@ -174,7 +174,9 @@ else {
                                     <!-- here script php for get all products from database -->
                                      <!-- start -->
                                       <?php
-$sql = "SELECT * FROM produit,categorie WHERE produit.id_cat=categorie.id_cat";
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+$sql = "SELECT * FROM produit,categorie WHERE produit.id_cat=categorie.id_cat ORDER BY id_pr DESC LIMIT 9 OFFSET " . (($page - 1) * 9);
 $result = mysqli_query($db, $sql);
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) 
@@ -209,15 +211,25 @@ if (mysqli_num_rows($result) > 0) {
                                     ?>
 <!-- end -->
                                     <div class="col-12">
+
                                         <div class="pagination d-flex justify-content-center mt-5">
                                             <a href="#" class="rounded">&laquo;</a>
-                                            <a href="#" class="active rounded">1</a>
-                                            <a href="#" class="rounded">2</a>
-                                            <a href="#" class="rounded">3</a>
-                                            <a href="#" class="rounded">4</a>
-                                            <a href="#" class="rounded">5</a>
-                                            <a href="#" class="rounded">6</a>
-                                            <a href="#" class="rounded">&raquo;</a>
+                                            <?php
+$sql = "SELECT * FROM produit";
+$result = mysqli_query($db, $sql);
+$total_records = mysqli_num_rows($result);
+$total_pages = ceil($total_records / 9);
+
+
+                                            ?>
+                                            
+                                            <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                                                <a href="shop.php?page=<?php echo $i; ?>" class="rounded <?php echo ($i == $page) ? 'active' : ''; ?>"><?php echo $i; ?></a>
+                                            <?php endfor; ?>
+
+                                           
+                                            <a href="shop.php?page=<?php echo $total_pages; ?>" class="rounded">&raquo;</a>
+
                                         </div>
                                     </div>
                                 </div>
