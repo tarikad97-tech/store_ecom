@@ -3,7 +3,7 @@ include 'navbar.php';
 
 // Check if user is logged in
 if(!isset($_SESSION['id_cl']) || empty($_SESSION['id_cl'])){
-    header("Location: login.php");
+    header("Location: login");
     exit;
 }
 
@@ -17,7 +17,7 @@ $payment_method = isset($_GET['method']) ? htmlspecialchars($_GET['method']) : '
         <div class="container-fluid page-header py-5">
             <h1 class="text-center text-white display-6">Order Success</h1>
             <ol class="breadcrumb justify-content-center mb-0">
-                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                <li class="breadcrumb-item"><a href="index">Home</a></li>
                 <li class="breadcrumb-item active text-white">Order Success</li>
             </ol>
         </div>
@@ -47,8 +47,8 @@ $payment_method = isset($_GET['method']) ? htmlspecialchars($_GET['method']) : '
                                 <?php endif; ?>
                                 
                                 <div class="mt-4">
-                                    <a href="shop.php" class="btn btn-primary me-2">Continue Shopping</a>
-                                    <a href="index.php" class="btn btn-outline-primary">Go to Home</a>
+                                    <a href="shop" class="btn btn-primary me-2">Continue Shopping</a>
+                                    <a href="index" class="btn btn-outline-primary">Go to Home</a>
                                 </div>
                             </div>
                         </div>

@@ -4,7 +4,7 @@ require_once 'config.php';
 
 // Check if user is logged in
 if (!isset($_SESSION['id_cl']) || empty($_SESSION['id_cl'])) {
-    header("Location: ../login.php");
+    header("Location: ../login");
     exit;
 }
 
@@ -91,24 +91,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             mysqli_commit($db);
             
             // Redirect with success message
-            header("Location: ../profile.php?success=1");
+            header("Location: ../profile?success=1");
             exit;
             
         } catch (Exception $e) {
             // Rollback transaction on error
             mysqli_rollback($db);
-            header("Location: ../profile.php?error=" . urlencode($e->getMessage()));
+            header("Location: ../profile?error=" . urlencode($e->getMessage()));
             exit;
         }
     } else {
         // Redirect with error messages
         $error_msg = implode(', ', $errors);
-        header("Location: ../profile.php?error=" . urlencode($error_msg));
+        header("Location: ../profile?error=" . urlencode($error_msg));
         exit;
     }
 } else {
     // If not POST request, redirect to profile page
-    header("Location: ../profile.php");
+    header("Location: ../profile");
     exit;
 }
 ?>

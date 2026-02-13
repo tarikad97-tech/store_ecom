@@ -224,11 +224,11 @@ $total_pages = ceil($total_records / 9);
                                             ?>
                                             
                                             <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-                                                <a href="shop.php?page=<?php echo $i; ?>" class="rounded <?php echo ($i == $page) ? 'active' : ''; ?>"><?php echo $i; ?></a>
+                                                <a href="shop?page=<?php echo $i; ?>" class="rounded <?php echo ($i == $page) ? 'active' : ''; ?>"><?php echo $i; ?></a>
                                             <?php endfor; ?>
 
                                            
-                                            <a href="shop.php?page=<?php echo $total_pages; ?>" class="rounded">&raquo;</a>
+                                            <a href="shop?page=<?php echo $total_pages; ?>" class="rounded">&raquo;</a>
 
                                         </div>
                                     </div>
