@@ -195,7 +195,7 @@ if (mysqli_num_rows($result) > 0) {
                                                 <p><?php echo $row['desc_pr']; ?></p>
                                                 <div class="d-flex justify-content-between flex-lg-wrap">
                                                     <p class="text-dark fs-5 fw-bold mb-0"><?php echo $row['prix_pr']; ?> DH</p>
-                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                    <a href="php/add_to_cart.php?id=<?php echo $row['id_pr']; ?>" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
                                                 </div>
                                             </div>
                                         </div>
