@@ -52,35 +52,79 @@ include 'navbar.php';
                           </tr>
                         </thead>
                         <tbody>
+                            <?php
+// CREATE TABLE card (
+//   id_pa INT NOT NULL AUTO_INCREMENT,
+//   id_cl INT NOT NULL,
+//   PRIMARY KEY (id_pa),
+//   KEY idx_card_client (id_cl),
+//   CONSTRAINT fk_card_client
+//     FOREIGN KEY (id_cl) REFERENCES client(id_cl)
+//     ON UPDATE CASCADE
+//     ON DELETE CASCADE
+// ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+// -- =========================
+// -- TABLE: sous_card (lignes panier)
+// -- =========================
+// CREATE TABLE sous_card (
+//   id_sdpa INT NOT NULL AUTO_INCREMENT,
+//   id_pa INT NOT NULL,
+//   id_pr INT NOT NULL,
+//   PRIMARY KEY (id_sdpa),
+//   KEY idx_souscard_card (id_pa),
+//   KEY idx_souscard_produit (id_pr),
+//   CONSTRAINT fk_souscard_card
+//     FOREIGN KEY (id_pa) REFERENCES card(id_pa)
+//     ON UPDATE CASCADE
+//     ON DELETE CASCADE,
+//   CONSTRAINT fk_souscard_produit
+//     FOREIGN KEY (id_pr) REFERENCES produit(id_pr)
+//     ON UPDATE CASCADE
+//     ON DELETE RESTRICT
+// ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+                            if(!$_SESSION['id_cl']){
+                               header("Location: login.php");
+                            } else {
+                              $sql = "SELECT * FROM card WHERE id_cl = '".$_SESSION['id_cl']."'";
+                              $result = mysqli_query($db, $sql);
+                              $row=mysqli_fetch_assoc($result);
+                              $sql2 = "SELECT * FROM sous_card,produit WHERE id_pa = '".$row['id_pa']."' AND sous_card.id_pr = produit.id_pr";
+                              $result2 = mysqli_query($db, $sql2);
+                                while($row2=mysqli_fetch_assoc($result2)){
+
+?>
                             <tr>
                                 <th scope="row">
                                     <div class="d-flex align-items-center">
-                                        <img src="img/vegetable-item-3.png" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
+                                        <img src="uploads/<?php echo $row2['imgpr_pr']; ?>" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
                                     </div>
                                 </th>
                                 <td>
-                                    <p class="mb-0 mt-4">Big Banana</p>
+                                    <p class="mb-0 mt-4"><?php echo $row2['nom_pr']; ?></p>
                                 </td>
                                 <td>
-                                    <p class="mb-0 mt-4">2.99 $</p>
+                                    <p class="mb-0 mt-4" ><input type="hidden" name="prix_pr" class="price_pr" value="<?php echo $row2['prix_pr']; ?>"><?php echo $row2['prix_pr']; ?> DH</p>
                                 </td>
                                 <td>
                                     <div class="input-group quantity mt-4" style="width: 100px;">
                                         <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
+                                            <button type="button" class="btn btn-sm btn-minus rounded-circle bg-light border" >
                                             <i class="fa fa-minus"></i>
                                             </button>
                                         </div>
-                                        <input type="text" class="form-control form-control-sm text-center border-0" value="1">
+                                        <input type="text" class="form-control form-control-sm text-center border-0 quantity_input" value="1" min="1" max="10">
                                         <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                            <button type="button" class="btn btn-sm btn-plus rounded-circle bg-light border">
                                                 <i class="fa fa-plus"></i>
                                             </button>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <p class="mb-0 mt-4">2.99 $</p>
+                                    <p class="mb-0 mt-4 total_price"><?php echo $row2['prix_pr']; ?> DH</p>
                                 </td>
                                 <td>
                                     <button class="btn btn-md rounded-circle bg-light border mt-4" >
@@ -89,78 +133,12 @@ include 'navbar.php';
                                 </td>
                             
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="d-flex align-items-center">
-                                        <img src="img/vegetable-item-5.jpg" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="" alt="">
-                                    </div>
-                                </th>
-                                <td>
-                                    <p class="mb-0 mt-4">Potatoes</p>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">2.99 $</p>
-                                </td>
-                                <td>
-                                    <div class="input-group quantity mt-4" style="width: 100px;">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
-                                            <i class="fa fa-minus"></i>
-                                            </button>
-                                        </div>
-                                        <input type="text" class="form-control form-control-sm text-center border-0" value="1">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">2.99 $</p>
-                                </td>
-                                <td>
-                                    <button class="btn btn-md rounded-circle bg-light border mt-4" >
-                                        <i class="fa fa-times text-danger"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="d-flex align-items-center">
-                                        <img src="img/vegetable-item-2.jpg" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="" alt="">
-                                    </div>
-                                </th>
-                                <td>
-                                    <p class="mb-0 mt-4">Awesome Brocoli</p>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">2.99 $</p>
-                                </td>
-                                <td>
-                                    <div class="input-group quantity mt-4" style="width: 100px;">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
-                                            <i class="fa fa-minus"></i>
-                                            </button>
-                                        </div>
-                                        <input type="text" class="form-control form-control-sm text-center border-0" value="1">
-                                        <div class="input-group-btn">
-                                            <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">2.99 $</p>
-                                </td>
-                                <td>
-                                    <button class="btn btn-md rounded-circle bg-light border mt-4" >
-                                        <i class="fa fa-times text-danger"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                       <?php
+
+                            }
+                            }
+
+?>
                         </tbody>
                     </table>
                 </div>
@@ -201,6 +179,39 @@ include 'navbar.php';
 
         <!-- Footer Start -->
        <!-- Footer Start -->
+        
+        <script>
+        // Additional quantity handler for cart page
+        jQuery(document).ready(function($) {
+            $(document).on('click', '.quantity .btn-plus, .quantity .btn-minus', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                var button = $(this);
+                var row = button.closest('tr');
+                var quantityInput = row.find('.quantity_input');
+                var oldValue = parseFloat(quantityInput.val()) || 1;
+                
+                var newVal;
+                if (button.hasClass('btn-plus')) {
+                    newVal = oldValue + 1;
+                } else if (button.hasClass('btn-minus')) {
+                    newVal = oldValue > 1 ? oldValue - 1 : 1;
+                } else {
+                    return;
+                }
+                
+                quantityInput.val(newVal);
+                var prixpr = parseFloat(row.find('.price_pr').val());
+                
+                if (!isNaN(prixpr)) {
+                    var totalPrice = prixpr * newVal;
+                    row.find('.total_price').text(totalPrice.toFixed(2) + " DH");
+                }
+            });
+        });
+        </script>
+        
         <?php
 include 'footer.php';
   ?>

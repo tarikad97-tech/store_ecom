@@ -131,20 +131,65 @@
 
 
 
-    // Product Quantity
-    $('.quantity button').on('click', function () {
-        var button = $(this);
-        var oldValue = button.parent().parent().find('input').val();
-        if (button.hasClass('btn-plus')) {
-            var newVal = parseFloat(oldValue) + 1;
-        } else {
-            if (oldValue > 0) {
-                var newVal = parseFloat(oldValue) - 1;
-            } else {
-                newVal = 0;
+    // Quantity buttons handler
+    $(document).ready(function () {
+        console.log('Quantity handler initialized');
+        
+        // Handle clicks on quantity buttons
+        $(document).on('click', '.quantity .btn-plus, .quantity .btn-minus', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            console.log('Quantity button clicked');
+            
+            var button = $(this);
+            var row = button.closest('tr');
+            
+            if (row.length === 0) {
+                console.log('Row not found');
+                return;
             }
-        }
-        button.parent().parent().find('input').val(newVal);
+            
+            var quantityInput = row.find('.quantity_input');
+            if (quantityInput.length === 0) {
+                console.log('Quantity input not found');
+                return;
+            }
+            
+            var oldValue = parseFloat(quantityInput.val()) || 1;
+            console.log('Old value:', oldValue);
+            
+            var newVal;
+            if (button.hasClass('btn-plus')) {
+                newVal = oldValue + 1;
+                console.log('Plus clicked, new value:', newVal);
+            } else if (button.hasClass('btn-minus')) {
+                if (oldValue > 1) {
+                    newVal = oldValue - 1;
+                } else {
+                    newVal = 1;
+                }
+                console.log('Minus clicked, new value:', newVal);
+            } else {
+                return;
+            }
+            
+            quantityInput.val(newVal);
+            
+            var prixpr = parseFloat(row.find('.price_pr').val());
+            console.log('Price:', prixpr);
+            
+            if (isNaN(prixpr)) {
+                console.log('Price is NaN');
+                return;
+            }
+            
+            var quantity = parseFloat(newVal); 
+            var totalPrice = prixpr * quantity;
+            console.log('Total price:', totalPrice);
+            
+            row.find('.total_price').text(totalPrice.toFixed(2) + " DH");
+        });
     });
 
 })(jQuery);

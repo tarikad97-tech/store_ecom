@@ -193,7 +193,7 @@ while ($row = mysqli_fetch_assoc($res)) {
                     $<?php echo number_format($row['prix_pr'], 2); ?> / kg
                 </p>
 
-                <a href="add_to_cart.php?id=<?php echo $row['id_pr']; ?>" 
+                <a href="php/add_to_cart.php?id=<?php echo $row['id_pr']; ?>" 
                    class="btn border border-secondary rounded-pill px-3 text-primary">
                    <i class="fa fa-shopping-bag me-2 text-primary"></i> 
                    Add to cart
