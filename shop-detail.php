@@ -67,7 +67,7 @@ include 'navbar.php';
                                $row = $res->fetch_assoc();
 
                                $image = !empty($row['imgpr_pr']) 
-                                 ? '../uploads/'.$row['imgpr_pr'] 
+                                 ? 'uploads/'.$row['imgpr_pr'] 
                                       : 'https://via.placeholder.com/300';
                                  ?>
                                 <div class="border rounded">
@@ -112,7 +112,7 @@ include 'navbar.php';
                                         </button>
                                     </div>
                                 </div>
-                                <a href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                <a href="php/add_to_cart.php?id_pr=<?php echo $row['id_pr']; ?>" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
                             </div>
                             <div class="col-lg-12">
                                 <nav>
@@ -455,7 +455,7 @@ include 'navbar.php';
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
                                 <div class="d-flex justify-content-between flex-lg-wrap">
                                     <p class="text-dark fs-5 fw-bold">$4.99 / kg</p>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                    <a href="php/add_to_cart.php?id_pr=<?php echo $row['id_pr']; ?>" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
                                 </div>
                             </div>
                         </div>
