@@ -136,7 +136,7 @@ include 'navbar.php';
                                     </a>
                                 </li>
                                 <?php
-$sql="SELECT  * FROM `categorie` limit 4";
+$sql="SELECT  * FROM `categorie` ORDER BY RAND() LIMIT 4";
 $res=mysqli_query($db,$sql);
 while ($row=mysqli_fetch_assoc($res)) {
 
