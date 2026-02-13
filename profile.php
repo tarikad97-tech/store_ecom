@@ -53,21 +53,13 @@ if (isset($_GET['error'])) {
         <!-- Single Page Header End -->
 
         <!-- Profile Form Start -->
-        <div class="container-fluid py-5" style="background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);">
+        <div class="container-fluid py-5">
             <div class="container py-5">
                 <div class="row justify-content-center">
                     <div class="col-md-8 col-lg-6">
-                        <div class="card shadow-lg border-0" style="border-radius: 24px; overflow: hidden;">
+                        <div class="card shadow">
                             <div class="card-body p-5">
-                                <div class="text-center mb-4">
-                                    <div class="mb-3">
-                                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #6366f1, #4f46e5); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);">
-                                            <i class="fas fa-user text-white" style="font-size: 32px;"></i>
-                                        </div>
-                                    </div>
-                                    <h2 class="card-title mb-2" style="font-weight: 800; color: #1f2937;">My Profile</h2>
-                                    <p class="text-muted">Manage your account information</p>
-                                </div>
+                                <h2 class="card-title text-center mb-4">My Profile</h2>
                                 
                                 <?php if ($success_message): ?>
                                     <div class="alert alert-success alert-dismissible fade show" role="alert">
