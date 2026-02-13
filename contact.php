@@ -61,6 +61,33 @@ include 'navbar.php';
                                 <textarea class="w-100 form-control border-0 mb-4" rows="5" cols="10" name="message" placeholder="Your Message"></textarea>
                                 <button class="w-100 btn form-control border-secondary py-3 bg-white text-primary " type="submit">Submit</button>
                             </form>
+                            <?php if(isset($_GET['status'])): ?>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    <?php if($_GET['status'] == 1): ?>
+        Swal.fire({
+            icon: 'success',
+            title: 'Message envoyé !',
+            text: 'Merci pour votre message',
+            confirmButtonColor: '#3085d6'
+        });
+    <?php else: ?>
+        Swal.fire({
+            icon: 'error',
+            title: 'Erreur !',
+            text: 'Message non envoyée',
+            confirmButtonColor: '#d33'
+        });
+    <?php endif; ?>
+
+});
+</script>
+
+<?php endif; ?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
                         </div>
                         <div class="col-lg-5">
                             <div class="d-flex p-4 rounded mb-4 bg-white">
