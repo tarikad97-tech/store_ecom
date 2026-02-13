@@ -173,9 +173,13 @@ while ($row = mysqli_fetch_assoc($res)) {
                                         
 <div class="col-md-6 col-lg-4 col-xl-3">
     <div class="rounded position-relative fruite-item">
-        <div class="fruite-img">
-            <img src="<?php echo $images; ?>" 
-                 class="img-fluid w-100 rounded-top" alt="" style="max-height: 250px; min-height: 250px; object-fit: cover;">
+         <div class="fruite-img">
+            <a href="shop-detail.php?id=<?= $row['id_pr']; ?>">
+                <img src="uploads/<?= htmlspecialchars($row['imgpr_pr']); ?>"
+                     class="img-fluid w-100 rounded-top"
+                     alt=""
+                     style="max-height: 250px; min-height: 250px; object-fit: cover;">
+            </a>
         </div>
 
         <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" 
