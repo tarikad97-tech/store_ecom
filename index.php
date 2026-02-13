@@ -136,7 +136,7 @@ include 'navbar.php';
                                     </a>
                                 </li>
                                 <?php
-$sql="SELECT * FROM `categorie`";
+$sql="SELECT  * FROM `categorie` limit 4";
 $res=mysqli_query($db,$sql);
 while ($row=mysqli_fetch_assoc($res)) {
 
@@ -155,6 +155,7 @@ while ($row=mysqli_fetch_assoc($res)) {
                         </div>
                     </div>
                     <div class="tab-content">
+                        <!-- start -->
                         <div id="tab-1" class="tab-pane fade show p-0 active">
                             <div class="row g-4">
                                 <div class="col-lg-12">
@@ -291,6 +292,7 @@ while ($row=mysqli_fetch_assoc($res)) {
                                 </div>
                             </div>
                         </div>
+                        <!-- end -->
                         <div id="tab-2" class="tab-pane fade show p-0">
                             <div class="row g-4">
                                 <div class="col-lg-12">
