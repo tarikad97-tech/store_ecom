@@ -66,4 +66,38 @@
 
 -- Livres (id_cat = 31)
 ('Livre Développement Personnel', 'livre_dp.jpg', 120.00, 31),
-('Roman Français', 'roman.jpg', 95.00, 31);
+('Roman Français', 'roman.jpg', 95.00, 31);       
+
+
+
+
+
+
+
+
+UPDATE produit SET desc_pr = 'T-shirt confortable et basique pour un usage quotidien. Matière douce et respirante, idéal pour toutes les occasions.' WHERE id_pr = 2;
+UPDATE produit SET desc_pr = 'Jean slim tendance, parfait pour un style casual chic. Coupe ajustée et tissu résistant pour un confort optimal.' WHERE id_pr = 3;
+UPDATE produit SET desc_pr = 'Robe légère avec imprimé floral, idéale pour l’été. Tissu doux et agréable à porter.' WHERE id_pr = 4;
+UPDATE produit SET desc_pr = 'Sac élégant et pratique pour toutes vos sorties. Design moderne avec compartiments spacieux.' WHERE id_pr = 5;
+UPDATE produit SET desc_pr = 'Dernier iPhone avec performance et design exceptionnel. Écran OLED, caméra avancée et grande autonomie.' WHERE id_pr = 6;
+UPDATE produit SET desc_pr = 'Smartphone puissant avec écran AMOLED et caméra haute résolution pour des photos parfaites.' WHERE id_pr = 7;
+UPDATE produit SET desc_pr = 'Ultraportable avec processeur M2 et autonomie prolongée. Léger, rapide et design élégant.' WHERE id_pr = 8;
+UPDATE produit SET desc_pr = 'PC performant pour travail et gaming léger. Processeur i7 et carte graphique dédiée.' WHERE id_pr = 9;
+UPDATE produit SET desc_pr = 'Machine à laver silencieuse et efficace. Capacité adaptée aux familles, programmable et durable.' WHERE id_pr = 10;
+UPDATE produit SET desc_pr = 'Réfrigérateur spacieux avec congélateur séparé et technologie No Frost pour un entretien facile.' WHERE id_pr = 11;
+UPDATE produit SET desc_pr = 'Tapis de course robuste pour vos entraînements quotidiens. Plusieurs vitesses et programme intégré.' WHERE id_pr = 12;
+UPDATE produit SET desc_pr = 'Paire d’haltères de 10kg pour musculation à domicile. Revêtement anti-dérapant pour sécurité optimale.' WHERE id_pr = 13;
+UPDATE produit SET desc_pr = 'Livre pour améliorer vos compétences personnelles et professionnelles. Idéal pour motivation et productivité.' WHERE id_pr = 14;
+UPDATE produit SET desc_pr = 'Roman captivant d’un auteur français contemporain. Histoire émouvante et intrigue passionnante.' WHERE id_pr = 15;
+UPDATE produit SET desc_pr = 'Chocolat noir riche en cacao, gourmand et sain pour le goûter ou dessert.' WHERE id_pr = 16;
+UPDATE produit SET desc_pr = 'Biscuits légers et croustillants pour le goûter, idéals avec un café ou thé.' WHERE id_pr = 17;
+UPDATE produit SET desc_pr = 'T-shirt confortable et basique pour un usage quotidien. Matière douce et respirante, idéal pour toutes les occasions.' WHERE id_pr = 18;
+UPDATE produit SET desc_pr = 'Jean slim tendance, parfait pour un style casual chic. Coupe ajustée et tissu résistant pour un confort optimal.' WHERE id_pr = 19;
+UPDATE produit SET desc_pr = 'Robe légère avec imprimé floral, idéale pour l’été. Tissu doux et agréable à porter.' WHERE id_pr = 20;
+UPDATE produit SET desc_pr = 'Sac élégant et pratique pour toutes vos sorties. Design moderne avec compartiments spacieux.' WHERE id_pr = 21;
+UPDATE produit SET desc_pr = 'Dernier iPhone avec performance et design exceptionnel. Écran OLED, caméra avancée et grande autonomie.' WHERE id_pr = 22;
+UPDATE produit SET desc_pr = 'Smartphone puissant avec écran AMOLED et caméra haute résolution pour des photos parfaites.' WHERE id_pr = 23;
+UPDATE produit SET desc_pr = 'Ultraportable avec processeur M2 et autonomie prolongée. Léger, rapide et design élégant.' WHERE id_pr = 24;
+UPDATE produit SET desc_pr = 'PC performant pour travail et gaming léger. Processeur i7 et carte graphique dédiée.' WHERE id_pr = 25;
+UPDATE produit SET desc_pr = 'Machine à laver silencieuse et efficace. Capacité adaptée aux familles, programmable et durable.' WHERE id_pr = 26;
+
