@@ -58,7 +58,7 @@ include 'navbar.php';
                             <form action="php/sendContact.php" class="" method="post">
                                 <input type="text" class="w-100 form-control border-0 py-3 mb-4" name="fname" placeholder="Your Name">
                                 <input type="email" class="w-100 form-control border-0 py-3 mb-4" name="email" placeholder="Enter Your Email">
-                                <textarea class="w-100 form-control border-0 mb-4" rows="5" cols="10" name="messsage" placeholder="Your Message"></textarea>
+                                <textarea class="w-100 form-control border-0 mb-4" rows="5" cols="10" name="message" placeholder="Your Message"></textarea>
                                 <button class="w-100 btn form-control border-secondary py-3 bg-white text-primary " type="submit">Submit</button>
                             </form>
                         </div>
@@ -67,21 +67,21 @@ include 'navbar.php';
                                 <i class="fas fa-map-marker-alt fa-2x text-primary me-4"></i>
                                 <div>
                                     <h4>Address</h4>
-                                    <p class="mb-2">123 Street New York.USA</p>
+                                    <p class="mb-2">Fes Medina,fes</p>
                                 </div>
                             </div>
                             <div class="d-flex p-4 rounded mb-4 bg-white">
                                 <i class="fas fa-envelope fa-2x text-primary me-4"></i>
                                 <div>
                                     <h4>Mail Us</h4>
-                                    <p class="mb-2">info@example.com</p>
+                                    <p class="mb-2">elkoubaiadnane2004@gmail.com</p>
                                 </div>
                             </div>
                             <div class="d-flex p-4 rounded bg-white">
                                 <i class="fa fa-phone-alt fa-2x text-primary me-4"></i>
                                 <div>
                                     <h4>Telephone</h4>
-                                    <p class="mb-2">(+012) 3456 7890</p>
+                                    <p class="mb-2">(+212) 612345678</p>
                                 </div>
                             </div>
                         </div>

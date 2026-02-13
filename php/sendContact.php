@@ -2,7 +2,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 $mail = new PHPMailer(true);
 $fname=$_POST['fname'];
@@ -32,10 +32,12 @@ try {
     $mail->AltBody = 'Email envoyé avec PHPMailer';
 
     $mail->send();
-
-    header('location: ./');
+    // echo "message envoye";
+    header('location: ../contact.php?status=1');
 } catch (Exception $e) {
-    echo "Erreur : {$mail->ErrorInfo}";
+    // echo "Erreur : {$mail->ErrorInfo}";
+    header('location: ../contact.php?status=0');
+
 }
 ?>
 
