@@ -32,7 +32,7 @@ if ($result->num_rows > 0) {
     $id_pa = $stmt_insert->insert_id;
 }
 
-$sql_sous = "SELECT id_sdpa, quantity FROM sous_card WHERE id_pa = ? AND id_pr = ?";
+$sql_sous = "SELECT id_sdpa, qte FROM sous_card WHERE id_pa = ? AND id_pr = ?";
 $stmt_sous = $db->prepare($sql_sous);
 $stmt_sous->bind_param("ii", $id_pa, $id_pr);
 $stmt_sous->execute();
@@ -40,13 +40,13 @@ $result_sous = $stmt_sous->get_result();
 
 if ($result_sous->num_rows > 0) {
     $sous = $result_sous->fetch_assoc();
-    $new_qty = $sous['quantity'] + 1;
-    $sql_update = "UPDATE sous_card SET quantity = ? WHERE id_sdpa = ?";
+    $new_qty = $sous['qte'] + 1;
+    $sql_update = "UPDATE sous_card SET qte = ? WHERE id_sdpa = ?";
     $stmt_update = $db->prepare($sql_update);
     $stmt_update->bind_param("ii", $new_qty, $sous['id_sdpa']);
     $stmt_update->execute();
 } else {
-    $sql_insert_sous = "INSERT INTO sous_card (id_pa, id_pr, quantity) VALUES (?, ?, 1)";
+    $sql_insert_sous = "INSERT INTO sous_card (id_pa, id_pr, qte) VALUES (?, ?, 1)";
     $stmt_insert_sous = $db->prepare($sql_insert_sous);
     $stmt_insert_sous->bind_param("ii", $id_pa, $id_pr);
     $stmt_insert_sous->execute();
