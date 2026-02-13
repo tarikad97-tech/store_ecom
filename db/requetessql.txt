@@ -1,13 +1,69 @@
 1)SELECT * FROM `categorie`
 2)SELECT * FROM `produit`
-3)INSERT INTO categorie (nom_cat)
-VALUES 
-('Sport'),
+3)INSERT INTO categorie (nom_cat) VALUES
+('Mode Homme'),
+('Mode Femme'),
+('Mode Enfant'),
+('Chaussures'),
+('Sacs & Maroquinerie'),
+('Montres'),
+('Bijoux'),
+('Smartphones'),
+('Ordinateurs'),
+('Tablettes'),
+('Accessoires Téléphone'),
+('Gaming'),
+('TV & Audio'),
+('Caméras'),
+('Meubles'),
+('Décoration'),
+('Électroménager'),
+('Cuisine'),
+('Linge de Maison'),
+('Jardin'),
+('Soins Visage'),
+('Maquillage'),
+('Parfums'),
+('Produits Capillaires'),
+('Compléments Alimentaires'),
+('Fitness'),
+('Football'),
+('Randonnée'),
+('Vélo'),
+('Natation'),
+('Livres'),
 ('Musique'),
-('Théâtre'),
-('Danse');
+('Films'),
+('Jeux Vidéo'),
+('Jouets');
+
 4)SELECT * FROM `produit`,categorie WHERE produit.id_cat=categorie.id_cat
 
+5)INSERT INTO produit (nom_pr, imgpr_pr, prix_pr, id_cat) VALUES
+-- Mode Homme (id_cat = 2)
+('T-shirt Homme Basic', 'tshirt_homme.jpg', 149.00, 2),
+('Jean Slim Homme', 'jean_homme.jpg', 399.00, 2),
 
+-- Mode Femme (id_cat = 3)
+('Robe Été Fleurie', 'robe_femme.jpg', 349.00, 3),
+('Sac à Main Élégant', 'sac_femme.jpg', 499.00, 3),
 
+-- Smartphones (id_cat = 8)
+('iPhone 15 Pro', 'iphone15.jpg', 12999.00, 8),
+('Samsung Galaxy S23', 's23.jpg', 10999.00, 8),
 
+-- Ordinateurs (id_cat = 9)
+('MacBook Air M2', 'macbook.jpg', 14999.00, 9),
+('PC Portable HP i7', 'hp_i7.jpg', 8999.00, 9),
+
+-- Électroménager (id_cat = 17)
+('Machine à Laver LG', 'machine_laver.jpg', 5499.00, 17),
+('Réfrigérateur Samsung', 'frigo.jpg', 7999.00, 17),
+
+-- Fitness (id_cat = 26)
+('Tapis de Course', 'tapis.jpg', 6999.00, 26),
+('Haltères 10kg', 'halteres.jpg', 299.00, 26),
+
+-- Livres (id_cat = 31)
+('Livre Développement Personnel', 'livre_dp.jpg', 120.00, 31),
+('Roman Français', 'roman.jpg', 95.00, 31);
