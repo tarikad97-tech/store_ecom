@@ -1,10 +1,7 @@
 <?php
 session_start();
-<<<<<<< HEAD
-
-// مثال مؤقت (من بعد تربطها بقاعدة البيانات)
 $username = $_SESSION['username'] ?? "Adnane";
-$email    = $_SESSION['email'] ?? "adnane@email.com";
+$email    = $_SESSION['email'] ?? "elkoubaiadnane2004@email.com";
 ?>
 
 <!DOCTYPE html>
@@ -47,6 +44,7 @@ $email    = $_SESSION['email'] ?? "adnane@email.com";
 
 </body>
 </html>
+<<<<<<< HEAD
 =======
 require_once 'config.php';
 
@@ -162,3 +160,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 >>>>>>> a38f2bdbe1b3e029b4d078d58590059ba829f710
+=======
+>>>>>>> 33b37b6f5f3368444f47085d091cc12d97de0dcb
