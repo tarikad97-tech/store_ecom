@@ -61,30 +61,30 @@ session_start();
             </div>
             <div class="container px-0">
                 <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                    <a href="index.php" class="navbar-brand"><h1 class="text-primary display-6">Mini Store</h1></a>
+                    <a href="index" class="navbar-brand"><h1 class="text-primary display-6">Mini Store</h1></a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars text-primary"></span>
                     </button>
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="index.php" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : ''; ?>">Home</a>
-                            <a href="shop.php" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'shop.php' ? 'active' : ''; ?>">Shop</a>
-                            <!-- <a href="shop-detail.php" class="nav-item nav-link">Shop Detail</a> -->
+                            <a href="index" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF'], '.php') == 'index' ? 'active' : ''; ?>">Home</a>
+                            <a href="shop" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF'], '.php') == 'shop' ? 'active' : ''; ?>">Shop</a>
+                            <!-- <a href="shop-detail" class="nav-item nav-link">Shop Detail</a> -->
                             <!-- <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                    <a href="cart.php" class="dropdown-item">Cart</a>
-                                    <a href="chackout.php" class="dropdown-item">Chackout</a>
-                                    <a href="testimonial.php" class="dropdown-item">Testimonial</a>
-                                    <a href="404.php" class="dropdown-item">404 Page</a>
+                                    <a href="cart" class="dropdown-item">Cart</a>
+                                    <a href="chackout" class="dropdown-item">Chackout</a>
+                                    <a href="testimonial" class="dropdown-item">Testimonial</a>
+                                    <a href="404" class="dropdown-item">404 Page</a>
                                 </div>
                             </div> -->
-                            <a href="contact.php" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'contact.php' ? 'active' : ''; ?>">Contact</a>
+                            <a href="contact" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF'], '.php') == 'contact' ? 'active' : ''; ?>">Contact</a>
                         </div>
                         <div class="d-flex m-3 me-0">
                             <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
                            
-                            <a href="cart.php" class="position-relative me-4 my-auto">
+                            <a href="cart" class="position-relative me-4 my-auto">
                                 <i class="fa fa-shopping-bag fa-2x"></i>
                                 <span id="cart-count" class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">
                                     
@@ -99,7 +99,7 @@ session_start();
 if (isset($_SESSION['email'])) {
   ?>
  <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                    <a href="php/profile.php" class="dropdown-item">Profile</a>
+                                    <a href="profile.php" class="dropdown-item">Profile</a>
                                     <a href="orders.php" class="dropdown-item">Orders</a>
                                     <a href="php/logout.php" class="dropdown-item">Logout</a>
                                 </div>
@@ -107,8 +107,8 @@ if (isset($_SESSION['email'])) {
 } else {
     // User is not logged in, show login and register options
     echo '<div class="dropdown-menu m-0 bg-secondary rounded-0">
-            <a href="login.php" class="dropdown-item">Login</a>
-            <a href="register.php" class="dropdown-item">Register</a>
+            <a href="login" class="dropdown-item">Login</a>
+            <a href="register" class="dropdown-item">Register</a>
           </div>';
 }
 ?>

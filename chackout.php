@@ -29,8 +29,8 @@ include 'navbar.php';
         <div class="container-fluid page-header py-5">
             <h1 class="text-center text-white display-6">Checkout</h1>
             <ol class="breadcrumb justify-content-center mb-0">
-                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                <li class="breadcrumb-item"><a href="cart.php">Cart</a></li>
+                <li class="breadcrumb-item"><a href="index">Home</a></li>
+                <li class="breadcrumb-item"><a href="cart">Cart</a></li>
                 <li class="breadcrumb-item active text-white">Checkout</li>
             </ol>
         </div>
@@ -39,7 +39,7 @@ include 'navbar.php';
         <?php
 // Check if user is logged in
 if(!isset($_SESSION['id_cl']) || empty($_SESSION['id_cl'])){
-    header("Location: login.php");
+    header("Location: login");
     exit;
 }
 
@@ -114,7 +114,7 @@ $last_name = isset($name_parts[1]) ? implode(' ', array_slice($name_parts, 1)) :
                     <div class="alert alert-warning text-center">
                         <h4>Your cart is empty!</h4>
                         <p>Please add items to your cart before checkout.</p>
-                        <a href="shop.php" class="btn btn-primary">Continue Shopping</a>
+                        <a href="shop" class="btn btn-primary">Continue Shopping</a>
                     </div>
                 <?php else: ?>
                 <h1 class="mb-4">Billing details</h1>

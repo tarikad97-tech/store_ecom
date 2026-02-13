@@ -16,7 +16,7 @@ if ($result->num_rows > 0) {
         session_start();
         $_SESSION['email'] = $email;
         $_SESSION['id_cl'] = $row['id_cl'];
-        header('Location: ../index.php');
+        header('Location: ../index');
         exit();
     } else {
         // Mot de passe incorrect

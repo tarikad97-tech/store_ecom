@@ -87,7 +87,7 @@ include 'navbar.php';
 
 
                             if(!isset($_SESSION['id_cl']) || empty($_SESSION['id_cl'])){
-                               header("Location: login.php");
+                               header("Location: login");
                                exit;
                             } else {
                               $id_cl = intval($_SESSION['id_cl']);
@@ -158,7 +158,7 @@ include 'navbar.php';
                                     }
                                 } else {
                                     // Empty cart message
-                                    echo '<tr><td colspan="6" class="text-center py-5"><p class="mb-0">Your cart is empty. <a href="shop.php">Continue Shopping</a></p></td></tr>';
+                                    echo '<tr><td colspan="6" class="text-center py-5"><p class="mb-0">Your cart is empty. <a href="shop">Continue Shopping</a></p></td></tr>';
                                 }
                             }
 
@@ -222,7 +222,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST' &
             mysqli_stmt_close($stmt_coupon);
         }
     } else {
-        header("Location: login.php");
+        header("Location: login");
         exit;
     }
 }
@@ -263,7 +263,7 @@ mysqli_stmt_close($stmt_subtotal);
                                 <h5 class="mb-0 ps-4 me-4">Total</h5>
                                 <p class="mb-0 pe-4"><?php echo number_format($subtotal + 20, 2) . " DH"; ?></p>
                             </div>
-                            <a href="chackout.php" class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" >
+                            <a href="chackout" class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" >
                                 Proceed Checkout
                             </a>
                         </div>

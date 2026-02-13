@@ -65,7 +65,7 @@ include 'navbar.php';
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Register</button>
                     </form>
-                    <p class="text-center mt-3">Do you have an account? <a href="login.php">Login here</a></p>
+                    <p class="text-center mt-3">Do you have an account? <a href="login">Login here</a></p>
                 </div>
                 </div>
             </div>

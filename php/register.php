@@ -43,7 +43,7 @@ if ($db->query($sql_client) === TRUE) {
     $sql_log = "INSERT INTO log (email, passeword, id_cl) VALUES ('$email', '$hashed_password', $id_cl)";
     if ($db->query($sql_log) === TRUE) {
         // Succès: rediriger vers la page de login
-        header('Location: ../login.php');
+        header('Location: ../login');
         exit();
     } else {
         echo "Erreur lors de l'insertion dans log: " . $db->error;

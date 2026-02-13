@@ -4,7 +4,7 @@ require_once 'config.php';
 
 // Check if user is logged in
 if (!isset($_SESSION['id_cl']) || empty($_SESSION['id_cl'])) {
-    header("Location: ../login.php");
+    header("Location: ../login");
     exit;
 }
 
@@ -109,24 +109,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             mysqli_commit($db);
             
             // Redirect to success page
-            header("Location: ../order_success.php?total=" . urlencode($total) . "&method=" . urlencode($payment_method));
+            header("Location: ../order_success?total=" . urlencode($total) . "&method=" . urlencode($payment_method));
             exit;
             
         } catch (Exception $e) {
             // Rollback transaction on error
             mysqli_rollback($db);
-            header("Location: ../chackout.php?error=" . urlencode($e->getMessage()));
+            header("Location: ../chackout?error=" . urlencode($e->getMessage()));
             exit;
         }
     } else {
         // Redirect with error messages
         $error_msg = implode(', ', $errors);
-        header("Location: ../chackout.php?error=" . urlencode($error_msg));
+        header("Location: ../chackout?error=" . urlencode($error_msg));
         exit;
     }
 } else {
     // If not POST request, redirect to checkout
-    header("Location: ../chackout.php");
+    header("Location: ../chackout");
     exit;
 }
 ?>
