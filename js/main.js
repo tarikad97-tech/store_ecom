@@ -112,9 +112,11 @@
     });
 
 
-    // Modal Video
+    // Modal Video, Quantity buttons handler, and Delete item handler
     $(document).ready(function () {
         var $videoSrc;
+        
+        // Modal Video
         $('.btn-play').click(function () {
             $videoSrc = $(this).data("src");
         });
@@ -127,12 +129,8 @@
         $('#videoModal').on('hide.bs.modal', function (e) {
             $("#video").attr('src', $videoSrc);
         })
-    });
 
-
-
-    // Quantity buttons handler
-    $(document).ready(function () {
+        // Quantity buttons handler
         console.log('Quantity handler initialized');
         
         // Handle clicks on quantity buttons
@@ -189,6 +187,28 @@
             console.log('Total price:', totalPrice);
             
             row.find('.total_price').text(totalPrice.toFixed(2) + " DH");
+        });
+
+        // Delete item handler
+        console.log('Delete item handler initialized');
+        $(document).on('click', '.delete_item', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var button = $(this);
+            var itemId = button.data('id');
+            console.log('Delete button clicked for item ID:', itemId);
+            $.ajax({
+                url: 'php/delete_item.php',
+                type: 'POST',
+                data: { id: itemId },
+                success: function (response) {
+                    console.log('Item deleted successfully:', response);
+                    button.closest('tr').remove();
+                },
+                error: function (error) {
+                    console.error('Error deleting item:', error);
+                }
+            });
         });
     });
 

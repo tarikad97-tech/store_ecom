@@ -85,15 +85,31 @@ include 'navbar.php';
 // ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
-                            if(!$_SESSION['id_cl']){
+                            if(!isset($_SESSION['id_cl']) || empty($_SESSION['id_cl'])){
                                header("Location: login.php");
+                               exit;
                             } else {
-                              $sql = "SELECT * FROM card WHERE id_cl = '".$_SESSION['id_cl']."'";
-                              $result = mysqli_query($db, $sql);
-                              $row=mysqli_fetch_assoc($result);
-                              $sql2 = "SELECT * FROM sous_card,produit WHERE id_pa = '".$row['id_pa']."' AND sous_card.id_pr = produit.id_pr";
-                              $result2 = mysqli_query($db, $sql2);
-                                while($row2=mysqli_fetch_assoc($result2)){
+                              $id_cl = intval($_SESSION['id_cl']);
+                              $sql = "SELECT * FROM card WHERE id_cl = ?";
+                              $stmt = mysqli_prepare($db, $sql);
+                              mysqli_stmt_bind_param($stmt, "i", $id_cl);
+                              mysqli_stmt_execute($stmt);
+                              $result = mysqli_stmt_get_result($stmt);
+                              $row = mysqli_fetch_assoc($result);
+                              mysqli_stmt_close($stmt);
+                              
+                              if($row) {
+                                  $id_pa = intval($row['id_pa']);
+                                  $sql2 = "SELECT * FROM sous_card,produit WHERE id_pa = ? AND sous_card.id_pr = produit.id_pr";
+                                  $stmt2 = mysqli_prepare($db, $sql2);
+                                  mysqli_stmt_bind_param($stmt2, "i", $id_pa);
+                                  mysqli_stmt_execute($stmt2);
+                                  $result2 = mysqli_stmt_get_result($stmt2);
+                              } else {
+                                  $result2 = false;
+                              }
+                                if($result2) {
+                                    while($row2=mysqli_fetch_assoc($result2)){
 
 ?>
                             <tr>
@@ -127,7 +143,7 @@ include 'navbar.php';
                                     <p class="mb-0 mt-4 total_price"><?php echo $row2['prix_pr']; ?> DH</p>
                                 </td>
                                 <td>
-                                    <button class="btn btn-md rounded-circle bg-light border mt-4" >
+                                    <button class="btn btn-md rounded-circle bg-light border mt-4 delete_item" data-id="<?php echo $row2['id_sdpa']; ?>">
                                         <i class="fa fa-times text-danger"></i>
                                     </button>
                                 </td>
@@ -135,7 +151,11 @@ include 'navbar.php';
                             </tr>
                        <?php
 
-                            }
+                                    }
+                                    if(isset($stmt2)) {
+                                        mysqli_stmt_close($stmt2);
+                                    }
+                                }
                             }
 
 ?>
