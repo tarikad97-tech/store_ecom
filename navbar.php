@@ -84,13 +84,20 @@ session_start();
                         <div class="d-flex m-3 me-0">
                             <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
                            
-                            <a href="cart" class="position-relative me-4 my-auto">
+                           <?php
+if (isset($_SESSION['id_cl'])) {
+    ?>
+     <a href="cart" class="position-relative me-4 my-auto">
                                 <i class="fa fa-shopping-bag fa-2x"></i>
                                 <span id="cart-count" class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">
                                     
 
                                 </span>
                             </a>
+    <?php
+}
+
+?>
                             <div class="nav-item dropdown my-auto">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                                     <i class="fas fa-user fa-2x"></i>

@@ -54,36 +54,6 @@ include 'navbar.php';
                         </thead>
                         <tbody>
                             <?php
-// CREATE TABLE card (
-//   id_pa INT NOT NULL AUTO_INCREMENT,
-//   id_cl INT NOT NULL,
-//   PRIMARY KEY (id_pa),
-//   KEY idx_card_client (id_cl),
-//   CONSTRAINT fk_card_client
-//     FOREIGN KEY (id_cl) REFERENCES client(id_cl)
-//     ON UPDATE CASCADE
-//     ON DELETE CASCADE
-// ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-// -- =========================
-// -- TABLE: sous_card (lignes panier)
-// -- =========================
-// CREATE TABLE sous_card (
-//   id_sdpa INT NOT NULL AUTO_INCREMENT,
-//   id_pa INT NOT NULL,
-//   id_pr INT NOT NULL,
-//   PRIMARY KEY (id_sdpa),
-//   KEY idx_souscard_card (id_pa),
-//   KEY idx_souscard_produit (id_pr),
-//   CONSTRAINT fk_souscard_card
-//     FOREIGN KEY (id_pa) REFERENCES card(id_pa)
-//     ON UPDATE CASCADE
-//     ON DELETE CASCADE,
-//   CONSTRAINT fk_souscard_produit
-//     FOREIGN KEY (id_pr) REFERENCES produit(id_pr)
-//     ON UPDATE CASCADE
-//     ON DELETE RESTRICT
-// ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
                             if(!isset($_SESSION['id_cl']) || empty($_SESSION['id_cl'])){
