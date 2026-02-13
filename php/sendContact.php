@@ -28,7 +28,7 @@ try {
     // Contenu
     $mail->isHTML(true);
     
-    $mail->Body    = $message;
+    $mail->Body    =$email . $message;
     $mail->AltBody = 'Email envoyé avec PHPMailer';
 
     $mail->send();
