@@ -138,7 +138,6 @@
             e.preventDefault();
             e.stopPropagation();
             
-            console.log('Quantity button clicked');
             
             var button = $(this);
             var row = button.closest('tr');
@@ -186,7 +185,22 @@
             var totalPrice = prixpr * quantity;
             console.log('Total price:', totalPrice);
             
-            row.find('.total_price').text(totalPrice.toFixed(2) + " DH");
+            row.find('.total_price').text(totalPrice.toFixed(2) + "DH");
+            // function update qty in database
+             $.ajax({
+                url: 'php/update_cart.php',
+                type: 'POST',
+                data: {
+                    id_sdpa: row.find('.delete_item').data('id'),
+                    qte: newVal
+                },
+                success: function (response) {
+                    console.log('Quantity updated successfully:', response);
+                },
+                error: function (error) {
+                    console.error('Error updating quantity:', error);
+                }
+             });
         });
 
         // Delete item handler

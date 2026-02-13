@@ -140,7 +140,7 @@ include 'navbar.php';
                                     </div>
                                 </td>
                                 <td>
-                                    <p class="mb-0 mt-4 total_price"><?php echo $row2['prix_pr']; ?> DH</p>
+                                    <p class="mb-0 mt-4 total_price"><?php echo $row2['prix_pr'] * $row2['qte']; ?> DH</p>
                                 </td>
                                 <td>
                                     <button class="btn btn-md rounded-circle bg-light border mt-4 delete_item" data-id="<?php echo $row2['id_sdpa']; ?>">
