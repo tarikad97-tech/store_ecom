@@ -99,7 +99,7 @@ session_start();
 if (isset($_SESSION['email'])) {
   ?>
  <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                    <a href="profile.php" class="dropdown-item">Profile</a>
+                                    <a href="php/profile.php" class="dropdown-item">Profile</a>
                                     <a href="orders.php" class="dropdown-item">Orders</a>
                                     <a href="php/logout.php" class="dropdown-item">Logout</a>
                                 </div>
