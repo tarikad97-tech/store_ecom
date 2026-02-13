@@ -8,7 +8,10 @@ if (!isset($_SESSION['id_cl'])) {
 }
 
 if (!isset($_GET['id_pr']) || !is_numeric($_GET['id_pr'])) {
-    header("Location: ../index.php");
+   echo "<script>
+        // alert('Produit ajouté au panier');
+        window.history.go(-1);
+      </script>";
     exit;
 }
 
@@ -50,8 +53,11 @@ if ($result_sous->num_rows > 0) {
     $stmt_insert_sous = $db->prepare($sql_insert_sous);
     $stmt_insert_sous->bind_param("ii", $id_pa, $id_pr);
     $stmt_insert_sous->execute();
-}
+}   
 
-header("Location: ../index.php");
+echo "<script>
+        // alert('Produit ajouté au panier');
+        window.history.go(-1);
+      </script>";
 exit;
 ?>

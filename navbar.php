@@ -86,7 +86,24 @@ session_start();
                            
                             <a href="cart.php" class="position-relative me-4 my-auto">
                                 <i class="fa fa-shopping-bag fa-2x"></i>
-                                <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+                                <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">
+<?php
+if (isset($_SESSION['id_cl'])) {
+    $id_cl = $_SESSION['id_cl'];
+    $sql_count = "SELECT SUM(qte) AS total_items FROM sous_card sc JOIN card c ON sc.id_pa = c.id_pa WHERE c.id_cl = ?";
+    $stmt_count = $db->prepare($sql_count);
+    $stmt_count->bind_param("i", $id_cl);
+    $stmt_count->execute();
+    $result_count = $stmt_count->get_result();
+    $row_count = $result_count->fetch_assoc();
+    $total_items = $row_count['total_items'] ?? 0;
+    echo $total_items;
+} else {
+    echo "0";
+}
+?>
+
+                                </span>
                             </a>
                             <div class="nav-item dropdown my-auto">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">

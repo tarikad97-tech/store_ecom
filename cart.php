@@ -131,7 +131,7 @@ include 'navbar.php';
                                             <i class="fa fa-minus"></i>
                                             </button>
                                         </div>
-                                        <input type="text" class="form-control form-control-sm text-center border-0 quantity_input" value="1" min="1" max="10">
+                                        <input type="text" class="form-control form-control-sm text-center border-0 quantity_input" value="<?php echo $row2['qte']; ?>" min="1" max="10">
                                         <div class="input-group-btn">
                                             <button type="button" class="btn btn-sm btn-plus rounded-circle bg-light border">
                                                 <i class="fa fa-plus"></i>
