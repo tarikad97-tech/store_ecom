@@ -14,4 +14,9 @@ if (isset($_SESSION['id_cl'])) {
 } else {
     echo json_encode(0);
 }
+if (!isset($_SESSION['id_cl'])) 
+{
+header('Location: ../login.php');
+
+}
 ?>
