@@ -21,8 +21,12 @@ $sql = "DELETE FROM sous_card WHERE id_sdpa = $id";
 $result = mysqli_query($db, $sql);
 
 if ($result) {
-    echo "success";
+    if (mysqli_affected_rows($db) > 0) {
+        echo "success";
+    } else {
+        echo "Item not found";
+    }
 } else {
-    echo "error";
+    echo "error - " . mysqli_error($db);
 }
 ?>

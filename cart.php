@@ -310,7 +310,7 @@ mysqli_stmt_close($stmt_subtotal);
                             id: id_sdpa
                         },
                         success: function(response) {
-                            if (response.indexOf('successfully') !== -1) {
+                            if (response.trim() === 'success') {
                                 row.fadeOut(300, function() {
                                     $(this).remove();
                                     location.reload();
