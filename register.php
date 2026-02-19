@@ -26,7 +26,7 @@ include 'navbar.php';
                 <div class="card shadow">
                 <div class="card-body p-5">
                     <h2 class="card-title text-center mb-4">Register</h2>
-                    <form method="POST" action="php/register.php">
+                    <form method="POST" action="php/register">
                     <div class="mb-3">
                         <label for="fname" class="form-label">Full Name</label>
                         <input type="text" class="form-control" id="fname" name="fname" required>

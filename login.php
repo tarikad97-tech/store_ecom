@@ -26,7 +26,7 @@ include 'navbar.php';
                 <div class="card shadow">
                 <div class="card-body p-5">
                     <h2 class="card-title text-center mb-4">Login</h2>
-                    <form method="POST" action="php/login.php">
+                    <form method="POST" action="php/login">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
                         <input type="email" class="form-control" id="email" name="email" required>
