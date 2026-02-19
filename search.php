@@ -5,7 +5,22 @@ include 'navbar.php';
 
 
         <!-- Modal Search Start -->
- 
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex align-items-center">
+                        <div class="input-group w-75 mx-auto d-flex">
+                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                            <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Modal Search End -->
 
 
@@ -159,15 +174,14 @@ else {
                                     <!-- here script php for get all products from database -->
                                      <!-- start -->
                                       <?php
+                                     
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-
-$sql = "SELECT * FROM produit,categorie WHERE produit.id_cat=categorie.id_cat ORDER BY id_pr DESC LIMIT 9 OFFSET " . (($page - 1) * 9);
+$q=$_POST['keywords'] ;
+$sql = "SELECT * FROM produit,categorie WHERE produit.id_cat=categorie.id_cat and `nom_pr` LIKE '%".$q."%'";
 $result = mysqli_query($db, $sql);
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) 
         {
-       
-
 ?>
                                     <div class="col-md-6 col-lg-6 col-xl-4">
                                         <div class="rounded position-relative fruite-item">
@@ -200,7 +214,7 @@ if (mysqli_num_rows($result) > 0) {
                                         <div class="pagination d-flex justify-content-center mt-5">
                                             <a href="#" class="rounded">&laquo;</a>
                                             <?php
-$sql = "SELECT * FROM produit";
+$sql = "SELECT * FROM produit where `nom_pr` LIKE '%".$q."%'";
 $result = mysqli_query($db, $sql);
 $total_records = mysqli_num_rows($result);
 $total_pages = ceil($total_records / 9);

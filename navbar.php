@@ -103,6 +103,7 @@ if (isset($_SESSION['id_cl'])) {
                                     <i class="fas fa-user fa-2x"></i>
                                 </a>
                                 <?php
+                                
 if (isset($_SESSION['email'])) {
   ?>
  <div class="dropdown-menu m-0 bg-secondary rounded-0">
@@ -124,5 +125,25 @@ if (isset($_SESSION['email'])) {
                         </div>
                     </div>
                 </nav>
+            </div>
+        </div>
+
+        <!-- search modal -->
+          <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                     <form action="search" method="post" enctype="multipart/form-data">
+                    <div class="modal-body d-flex align-items-center">
+                        <div class="input-group w-75 mx-auto d-flex">
+                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1" name="keywords">
+                            <input type="submit" value="Search" class='btn btn-primary'>
+                        </div>
+                    </div>
+                     </form>
+                </div>
             </div>
         </div>
