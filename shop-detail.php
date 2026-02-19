@@ -23,6 +23,7 @@ include 'navbar.php';
         <!-- Modal Search End -->
 
 
+
         <!-- Single Page Header start -->
         <div class="container-fluid page-header py-5">
             <h1 class="text-center text-white display-6">Shop Detail</h1>
@@ -271,6 +272,20 @@ include 'navbar.php';
                     <div class="col-lg-4 col-xl-3">
                         <div class="row g-4 fruite">
                             <div class="col-lg-12">
+<?php
+$stmtCat = $db->prepare("
+    SELECT c.id_cat, c.nom_cat, COUNT(p.id_pr) as total_products
+    FROM categorie c
+    LEFT JOIN produit p ON c.id_cat = p.id_cat
+    GROUP BY c.id_cat
+    ORDER BY total_products DESC
+    LIMIT 5
+");
+
+$stmtCat->execute();
+$categories = $stmtCat->get_result();
+?>
+
                                 <div class="input-group w-100 mx-auto d-flex mb-4">
                                     <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
                                     <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
@@ -278,61 +293,68 @@ include 'navbar.php';
                                 <div class="mb-4">
                                     <h4>Categories</h4>
                                     <ul class="list-unstyled fruite-categorie">
-                                        <li>
-                                        
-                                        </li>
-                                        <li>
 
-                                            <div class="d-flex justify-content-between fruite-name">
-                                                <a href="#"><i class="fas fa-apple-alt me-2"></i>Pumpkin</a>
-                                                <span>(5)</span>
-                                            </div>
-                                        </li>
-                                    </ul>
+    <?php while($cat = $categories->fetch_assoc()): ?>
+
+        <li>
+            <div class="d-flex justify-content-between fruite-name">
+
+                <a href="shop.php?cat=<?= $cat['id_cat']; ?>">
+                    <i class="fas fa-folder me-2"></i>
+                    <?= htmlspecialchars($cat['nom_cat']); ?>
+                </a>
+
+                <span>(<?= $cat['total_products']; ?>)</span>
+
+            </div>
+        </li>
+
+    <?php endwhile; ?>
+
+</ul>
+
                                 </div>
                             </div>
-                            <div class="col-lg-12">
+                           
+                       <div class="col-lg-12">
+    <h4 class="mb-4">Featured Products</h4>
+
+    <?php
+    $featuredQuery = "SELECT * FROM produit ORDER BY id_pr DESC LIMIT 3";
+    $featured = $db->query($featuredQuery);
+    ?>
+
+    <?php if($featured && $featured->num_rows > 0): ?>
+        <?php while($feat = $featured->fetch_assoc()): ?>
+            <?php 
+            $feat_image = !empty($feat['imgpr_pr']) 
+                ? 'uploads/' . htmlspecialchars($feat['imgpr_pr']) 
+                : 'assets/img/no-image.png';
+            ?>
+            <div class="d-flex align-items-center mb-3">
+                <div style="width:100px; height:100px;" class="flex-shrink-0">
+                    <img src="<?= $feat_image ?>" class="img-fluid rounded w-100 h-100" style="object-fit:cover;" alt="<?= htmlspecialchars($feat['nom_pr']); ?>">
+                </div>
+                <div class="ms-3">
+                    <h6 class="mb-1">
+                        <a href="shop-detail.php?id=<?= (int)$feat['id_pr']; ?>" class="text-dark text-decoration-none">
+                            <?= htmlspecialchars($feat['nom_pr']); ?>
+                        </a>
+                    </h6>
+                    <div class="fw-bold text-primary"><?= number_format($feat['prix_pr'], 2); ?> DH</div>
+                </div>
+            </div>
+        <?php endwhile; ?>
+    <?php else: ?>
+        <p class="text-muted">No featured products found.</p>
+    <?php endif; ?>
+
+    <div class="d-flex justify-content-center mt-4">
+        <a href="shop.php" class="btn border border-secondary px-4 py-2 rounded-pill text-primary w-100">View More</a>
+    </div>
+</div>
 
 
-                            <!-- featured product  -->
-                                <h4 class="mb-4">Featured products</h4>
-                                <div class="d-flex align-items-center justify-content-start">
-                                    <div class="rounded" style="width: 100px; height: 100px;">
-                                        <img src="img/featur-1.jpg" class="img-fluid rounded" alt="Image">
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-2">Big Banana</h6>
-                                      
-                                        <div class="d-flex mb-2">
-                                            <h5 class="fw-bold me-2">2.99 $</h5>
-                                            <h5 class="text-danger text-decoration-line-through">4.11 $</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-start">
-                                    <div class="rounded" style="width: 100px; height: 100px;">
-                                        <img src="img/featur-2.jpg" class="img-fluid rounded" alt="">
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-2">Big Banana</h6>
-                                        <div class="d-flex mb-2">
-                                            <i class="fa fa-star text-secondary"></i>
-                                            <i class="fa fa-star text-secondary"></i>
-                                            <i class="fa fa-star text-secondary"></i>
-                                            <i class="fa fa-star text-secondary"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="d-flex mb-2">
-                                            <h5 class="fw-bold me-2">2.99 $</h5>
-                                            <h5 class="text-danger text-decoration-line-through">4.11 $</h5>
-                                        </div>
-                                    </div>
-                                </div>
- 
-                                <div class="d-flex justify-content-center my-4">
-                                    <a href="#" class="btn border border-secondary px-4 py-3 rounded-pill text-primary w-100">Vew More</a>
-                                </div>
-                            </div>
                             <div class="col-lg-12">
                                 <div class="position-relative">
                                     <img src="img/banner-fruits.jpg" class="img-fluid w-100 rounded" alt="">
@@ -364,6 +386,7 @@ $stmtRelated->execute();
 $related = $stmtRelated->get_result();
 ?>
 
+
      <h1 class="fw-bold mb-0">Related products</h1>
 
 <div class="vesitable">
@@ -384,9 +407,10 @@ $related = $stmtRelated->get_result();
                 </div>
 
                 <div class="text-white bg-primary px-3 py-1 rounded position-absolute" 
-                     style="top: 10px; right: 10px;">
-                    <?= htmlspecialchars($row['category_name']) ?>
-                </div>
+     style="top: 10px; right: 10px;">
+    <?= htmlspecialchars($rel['nom_cat']) ?>
+</div>
+
 
                 <div class="p-4 pb-0 rounded-bottom">
                     <h4><?= htmlspecialchars($rel['nom_pr']) ?></h4>
@@ -425,3 +449,4 @@ $related = $stmtRelated->get_result();
         <?php
 include 'footer.php';
   ?>
+
