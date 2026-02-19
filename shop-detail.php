@@ -350,17 +350,16 @@ include 'navbar.php';
 
 
 <?php
-$current_id = $row['id_pr'];
+// $current_id = $row['id_pr'];
 $current_cat = $row['id_cat'];
 
 $stmtRelated = $db->prepare("
-    SELECT * FROM produit 
-    WHERE id_cat = ? AND id_pr != ?
-    ORDER BY RAND()
-    LIMIT 6
+    SELECT * FROM categorie, produit 
+    WHERE produit.id_cat = categorie.id_cat 
+    and  categorie.id_cat = ? 
 ");
 
-$stmtRelated->bind_param("ii", $current_cat, $current_id);
+$stmtRelated->bind_param("i", $current_cat);
 $stmtRelated->execute();
 $related = $stmtRelated->get_result();
 ?>
