@@ -216,11 +216,17 @@
                 type: 'POST',
                 data: { id: itemId },
                 success: function (response) {
-                    console.log('Item deleted successfully:', response);
-                    button.closest('tr').remove();
+                    if (response === 'success') {
+                        console.log('Item deleted successfully');
+                        button.closest('tr').remove();
+                    } else {
+                        console.error('Deletion failed');
+                        alert('Error deleting item');
+                    }
                 },
                 error: function (error) {
                     console.error('Error deleting item:', error);
+                    alert('Error deleting item');
                 }
             });
         });

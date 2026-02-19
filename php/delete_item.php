@@ -2,30 +2,27 @@
 session_start();
 require_once 'config.php';
 
-// Verify user is logged in
+// Check if user is logged in
 if (!isset($_SESSION['id_cl'])) {
-    echo "Unauthorized access.";
+    echo "error";
     exit;
 }
 
-$id = intval($_POST['id'] ?? 0);
+// Check if ID is provided
+if (!isset($_POST['id'])) {
+    echo "error";
+    exit;
+}
 
-if ($id > 0) {
-    // Use prepared statement to prevent SQL injection
-    $sql = "DELETE FROM sous_card WHERE id_sdpa = ?";
-    $stmt = mysqli_prepare($db, $sql);
-    if ($stmt) {
-        mysqli_stmt_bind_param($stmt, "i", $id);
-        if (mysqli_stmt_execute($stmt)) {
-            echo "Item deleted successfully.";
-        } else {
-            echo "Error: " . mysqli_error($db);
-        }
-        mysqli_stmt_close($stmt);
-    } else {
-        echo "Error: " . mysqli_error($db);
-    }
+$id = $_POST['id'];
+
+// Delete the item from the database
+$sql = "DELETE FROM sous_card WHERE id_sdpa = $id";
+$result = mysqli_query($db, $sql);
+
+if ($result) {
+    echo "success";
 } else {
-    echo "No item ID provided.";
+    echo "error";
 }
 ?>
