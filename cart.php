@@ -1,11 +1,14 @@
-  <?php
-  session_start();
-   if(!isset($_SESSION['id_cl']) || empty($_SESSION['id_cl'])){
-                               header("Location: login");
-                               exit;
-                            }
+<?php
+session_start();
+require_once 'php/config.php';
+
+if (!isset($_SESSION['id_cl']) || empty($_SESSION['id_cl'])) {
+    header("Location: login.php");
+    exit();
+}
+
 include 'navbar.php';
-  ?>
+?>
   
         <!-- Navbar End -->
 
