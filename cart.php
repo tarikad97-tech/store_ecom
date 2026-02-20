@@ -1,4 +1,9 @@
   <?php
+  session_start();
+   if(!isset($_SESSION['id_cl']) || empty($_SESSION['id_cl'])){
+                               header("Location: login");
+                               exit;
+                            }
 include 'navbar.php';
   ?>
   
@@ -40,11 +45,6 @@ include 'navbar.php';
                         <tbody>
                             <?php
 
-
-                            if(!isset($_SESSION['id_cl']) || empty($_SESSION['id_cl'])){
-                               header("Location: login");
-                               exit;
-                            } else {
                               $id_cl = intval($_SESSION['id_cl']);
                               $sql = "SELECT * FROM card WHERE id_cl = ?";
                               $stmt = mysqli_prepare($db, $sql);
@@ -99,9 +99,9 @@ include 'navbar.php';
                                     <p class="mb-0 mt-4 total_price"><?php echo $row2['prix_pr'] * $row2['qte']; ?> DH</p>
                                 </td>
                                 <td>
-                                    <button class="btn btn-md rounded-circle bg-light border mt-4 delete_item" data-id="<?php echo $row2['id_sdpa']; ?>">
+                                    <a class="btn btn-md rounded-circle bg-light border mt-4 " href="php/delete_item.php?id=<?php echo $row2['id_sdpa']; ?>">
                                         <i class="fa fa-times text-danger"></i>
-                                    </button>
+</a>
                                 </td>
                             
                             </tr>
@@ -115,7 +115,7 @@ include 'navbar.php';
                                     // Empty cart message
                                     echo '<tr><td colspan="6" class="text-center py-5"><p class="mb-0">Your cart is empty. <a href="shop">Continue Shopping</a></p></td></tr>';
                                 }
-                            }
+                            
 
 ?>
                         </tbody>

@@ -9,12 +9,12 @@ if (!isset($_SESSION['id_cl'])) {
 }
 
 // Check if ID is provided
-if (!isset($_POST['id'])) {
+if (!isset($_GET['id'])) {
     echo "error";
     exit;
 }
 
-$id = $_POST['id'];
+$id = $_GET['id'];
 
 // Delete the item from the database
 $sql = "DELETE FROM sous_card WHERE id_sdpa = $id";
@@ -22,7 +22,8 @@ $result = mysqli_query($db, $sql);
 
 if ($result) {
     if (mysqli_affected_rows($db) > 0) {
-        echo "success";
+        header("Location: ../cart");
+        exit;
     } else {
         echo "Item not found";
     }
