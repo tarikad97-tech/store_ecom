@@ -1,4 +1,10 @@
 <?php
+session_start();
+// Check if user is logged in
+if(!isset($_SESSION['id_cl']) || empty($_SESSION['id_cl'])){
+    header("Location: login");
+    exit;
+}
 include 'navbar.php';
 ?>
 
@@ -22,11 +28,7 @@ include 'navbar.php';
         <!-- Single Page Header End -->
 
         <?php
-// Check if user is logged in
-if(!isset($_SESSION['id_cl']) || empty($_SESSION['id_cl'])){
-    header("Location: login");
-    exit;
-}
+
 
 $id_cl = intval($_SESSION['id_cl']);
 
@@ -228,7 +230,7 @@ $last_name = isset($name_parts[1]) ? implode(' ', array_slice($name_parts, 1)) :
                             <div class="row g-4 text-center align-items-center justify-content-center border-bottom py-3">
                                 <div class="col-12">
                                     <div class="form-check text-start my-3">
-                                        <input type="radio" class="form-check-input bg-primary border-0" id="Payments-1" name="payment_method" value="check" required>
+                                        <input type="radio" class="form-check-input bg-primary border-0" id="Payments-1" name="payment_method" value="check_cmi" required>
                                         <label class="form-check-label" for="Payments-1">Payments CMI Maroc</label>
                                     </div>
                                 </div>
@@ -256,6 +258,20 @@ $last_name = isset($name_parts[1]) ? implode(' ', array_slice($name_parts, 1)) :
         <!-- Checkout Page End -->
 
         <script>
+        var payment_method_inputs = document.querySelectorAll('input[name="payment_method"]');
+        var total_amount = document.getElementById('total-amount');
+        payment_method_inputs.forEach(function(input) {
+            input.addEventListener('change', function() {
+                if(this.value === 'check_cmi') {
+                    // Redirect to CMI payment page
+                    window.open('php/cmi/1.PaymentRequest.php?total_amount=' + total_amount.textContent.replace(' DH', ''), '_blank');
+                } else {
+                    // Redirect to order processing page for cash on delivery
+                    document.querySelector('form').action = 'php/process_order.php';
+                }
+            });
+        });
+
         // Update total when shipping changes
         document.querySelectorAll('input[name="shipping"]').forEach(function(radio) {
             radio.addEventListener('change', function() {
