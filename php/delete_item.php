@@ -1,33 +1,35 @@
 <?php
 session_start();
-require_once 'config.php';
+require_once 'config.php'; 
 
 // Check if user is logged in
 if (!isset($_SESSION['id_cl'])) {
-    echo "error";
+    echo "error: not logged in";
     exit;
 }
 
-// Check if ID is provided
-if (!isset($_GET['id'])) {
-    echo "error";
+// Check if ID is provided via POST
+if (!isset($_POST['id'])) {
+    echo "error: no id provided";
     exit;
 }
 
-$id = $_GET['id'];
+$id = intval($_POST['id']); 
 
-// Delete the item from the database
-$sql = "DELETE FROM sous_card WHERE id_sdpa = $id";
-$result = mysqli_query($db, $sql);
 
-if ($result) {
-    if (mysqli_affected_rows($db) > 0) {
-        header("Location: ../cart");
-        exit;
+$sql = "DELETE FROM sous_card WHERE id_sdpa = ?";
+$stmt = mysqli_prepare($db, $sql);
+mysqli_stmt_bind_param($stmt, "i", $id);
+
+if (mysqli_stmt_execute($stmt)) {
+    if (mysqli_stmt_affected_rows($stmt) > 0) {
+        echo "success"; 
     } else {
-        echo "Item not found";
+        echo "error: item not found";
     }
 } else {
-    echo "error - " . mysqli_error($db);
+    echo "error: " . mysqli_error($db);
 }
+
+mysqli_stmt_close($stmt);
 ?>
