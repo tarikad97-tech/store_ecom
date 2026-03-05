@@ -138,6 +138,7 @@ login admin
 email="elkoubaiadne20040@gmail.com";
 passeword="Ad123";
 
+
 CREATE TABLE alerts (
     id INT AUTO_INCREMENT PRIMARY KEY,
     message TEXT NOT NULL,
