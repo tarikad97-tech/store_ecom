@@ -9,13 +9,14 @@ require_once 'server/config.php';
 //     exit();
 // }
 
-include('navbar.php');
 ?>
 
 <body id="page-top">
 
 <div id="wrapper">
-
+    <?php
+include('navbar.php');
+?>
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
