@@ -48,13 +48,28 @@ require_once 'server/config.php'
                                         <div class="form-group">
                                             
                                             <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                id="email" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address...">
+                                                
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Password">
                                         </div>
+                                        <?php
+                                        if(iseet($_GET['msj'])&& $_GET=0)
+                                            {   
+                                            ?>
+                                           <script>
+                                             Swal.fire({
+                                                icon: "error",
+                                                title: "Oops...",
+                                                 text: "Email Or Passeword incorrect!",
+                                                });
+                                           </script>
+                                          <?php
+                                          }  
+                                        ?>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
@@ -95,7 +110,7 @@ require_once 'server/config.php'
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 

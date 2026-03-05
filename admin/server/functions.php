@@ -1,4 +1,5 @@
 <?php
+
 require_once "config.php";
 
 
@@ -25,5 +26,18 @@ function getAllcategories(){
     return $categories;
 }
 
+function adminlog($email,$passeword){
+   
+
+$sql = "SELECT email,passeword FROM admins WHERE admins.email = '$email' and admins.paseword='$passeword' and admins.role='admin'";
+$res= mysqli_query($db, $sql);
+
+if(mysqli_num_rows($res) > 0){
+    // echo "Email existe dans la base de données";
+    header('location:index.php');
+}else{
+    header('location:login.php?msj=0');
+}
+}
 
 ?>
