@@ -154,3 +154,9 @@ CREATE TABLE messages (
     content TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+
+
+login admin
+email="elkoubaiadne20040@gmail.com";
+passeword="Ad123";
