@@ -44,6 +44,53 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+<div id="content" class="flex-grow-1 p-4">
+    <h3 class="mb-4">➕ Add New Product</h3>
+
+    <form id="productForm" class="bg-white p-4 rounded shadow-sm" enctype="multipart/form-data" method="POST" action="server/add_product.php">
+
+        <div class="row g-3 mb-3">
+
+            <div class="col-md-4">
+                <label class="form-label">Product Name</label>
+                <input class="form-control" name="name" placeholder="Product name" required>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Price</label>
+                <input class="form-control" name="price" placeholder="Price" type="number" step="0.01" required>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Stock</label>
+                <input class="form-control" name="stock" placeholder="Stock" type="number" required>
+            </div>
+
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea class="form-control" name="description" placeholder="Description" rows="4"></textarea>
+        </div>
+
+       
+            <div class="col-md-3">
+                <label class="form-label">Image </label>
+                <input class="form-control" type="file" name="image" accept="image/*">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Product</button>
+
+    </form>
+
+    <hr class="my-4">
+
+   
+
+  
+
+
 
 
                 </div>
