@@ -163,7 +163,8 @@ src="uploads/<?php echo htmlspecialchars($msg['sender_img']); ?>">
 </span>
 
 <img class="img-profile rounded-circle"
-src="uploads/<?php echo $admin['profile_img'] ?? 'default.png'; ?>">
+src="uploads/<?php echo htmlspecialchars($admin['profile_img']); ?>">
+
 
 </a>
 
