@@ -151,3 +151,8 @@ CREATE TABLE messages (
     content TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+ALTER TABLE admins 
+ADD profile_img VARCHAR(255) DEFAULT 'default.png';
+
+
