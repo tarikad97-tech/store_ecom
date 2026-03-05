@@ -1,11 +1,9 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
 
-include('server/config.php');
 
-// حماية الصفحة
+// include('server/config.php');
+require_once 'server/config.php';
+
 if(!isset($_SESSION['admin_id'])){
     header("Location: login.php");
     exit();

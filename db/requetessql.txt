@@ -155,15 +155,7 @@ CREATE TABLE messages (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-<<<<<<< HEAD
 ALTER TABLE admins 
 ADD profile_img VARCHAR(255) DEFAULT 'default.png';
 
 
-=======
-
-
-login admin
-email="elkoubaiadne20040@gmail.com";
-passeword="Ad123";
->>>>>>> 2b4b397b2a9ab1f98cb6f00291ee72deb1001ac3
