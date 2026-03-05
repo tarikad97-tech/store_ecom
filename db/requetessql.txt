@@ -101,3 +101,27 @@ UPDATE produit SET desc_pr = 'Ultraportable avec processeur M2 et autonomie prol
 UPDATE produit SET desc_pr = 'PC performant pour travail et gaming léger. Processeur i7 et carte graphique dédiée.' WHERE id_pr = 25;
 UPDATE produit SET desc_pr = 'Machine à laver silencieuse et efficace. Capacité adaptée aux familles, programmable et durable.' WHERE id_pr = 26;
 
+
+
+
+CREATE TABLE products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    price DECIMAL(10,2) NOT NULL,
+    stock INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_name VARCHAR(100),
+    customer_email VARCHAR(100),
+    total DECIMAL(10,2) NOT NULL,
+    status ENUM('pending','processing','completed','cancelled') DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
