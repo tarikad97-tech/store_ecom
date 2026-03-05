@@ -2,12 +2,10 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-$db=mysqli_connect("localhost","root","","mini_store");
 
+$db = mysqli_connect("localhost","root","","store-ecome");
 
 if (!$db) {
-    header("location:404.php");
+    die("Database connection failed: " . mysqli_connect_error());
 }
-
-
 ?>
