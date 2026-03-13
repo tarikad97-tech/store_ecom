@@ -24,7 +24,6 @@ require_once 'server/config.php';
 <body id="page-top">
 
 <div class="d-flex" id="wrapper">
-
     <!-- Sidebar -->
     <?php include 'sidebar.php'; ?>
 

@@ -47,7 +47,7 @@
 <div id="content" class="flex-grow-1 p-4">
     <h3 class="mb-4">➕ Add New Product</h3>
 
-    <form id="productForm" class="bg-white p-4 rounded shadow-sm" enctype="multipart/form-data" method="POST" action="server/add_product.php">
+    <form id="productForm" class="bg-white p-4 rounded shadow-sm" enctype="multipart/form-data" method="POST" action="server/functions.php">
 
         <div class="row g-3 mb-3">
 
@@ -73,7 +73,7 @@
             <textarea class="form-control" name="description" placeholder="Description" rows="4"></textarea>
         </div>
 
-       
+        
             <div class="col-md-3">
                 <label class="form-label">Image </label>
                 <input class="form-control" type="file" name="image" accept="image/*">
@@ -85,14 +85,6 @@
     </form>
 
     <hr class="my-4">
-
-   
-
-  
-
-
-
-
                 </div>
                 <!-- /.container-fluid -->
 

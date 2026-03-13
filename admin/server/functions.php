@@ -1,5 +1,7 @@
+
 <?php
 
+global $db;
 require_once "config.php";
 
 
@@ -39,5 +41,43 @@ if(mysqli_num_rows($res) > 0){
     header('location:login.php?msj=0');
 }
 }
+
+
+
+
+
+
+function addProduct($db){
+
+    if(isset($_POST['name'])){
+
+        $name = $_POST['name'];
+         $description = $_POST['description'];
+        $price = $_POST['price'];
+        $stock = $_POST['stock'];
+       $image = $_FILES['image']['name'];
+        $tmp_name = $_FILES['image']['tmp_name'];
+        
+
+        $folder = "../img/" . $image;
+
+        move_uploaded_file($tmp_name, $folder);
+
+        $sql = "INSERT INTO products(name,description,price,stock,image)
+                VALUES('$name','$description','$price','$stock','$image')";
+
+        $result = mysqli_query($db,$sql);
+
+        if($result){
+            header("Location: ../products.php?success=1");
+        }else{
+            echo "Error: " . mysqli_error($db);
+        }
+
+    }
+
+}
+
+addProduct($db);
 
 ?>
